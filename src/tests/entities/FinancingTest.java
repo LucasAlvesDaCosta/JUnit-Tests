@@ -1,12 +1,12 @@
 package tests.entities;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import entities.Financing;
 
 public class FinancingTest {
+	public Financing fnc;
 	
 	@Test
 	public void financingCreateWhenValityValues() {
@@ -14,7 +14,7 @@ public class FinancingTest {
 		double income = 2000.0;
 		int months = 80;
 		
-		Financing fnc = new Financing(totalAmount,income, months);
+		fnc = new Financing(totalAmount,income, months);
 		Assertions.assertEquals(totalAmount, fnc.getTotalAmount());
 		Assertions.assertEquals(income, fnc.getIncome());
 		Assertions.assertEquals(months, fnc.getMonths());
@@ -28,9 +28,8 @@ public class FinancingTest {
 			 double totalAmount = 100000.0;
 				double income = 2000.0;
 				int months = 20;
-				Financing fnc = new Financing(totalAmount,income, months);
+				fnc = new Financing(totalAmount,income, months);
 		   });
-		
 	}
 	
 	@Test
@@ -38,7 +37,7 @@ public class FinancingTest {
 		double totalAmount = 100000.0;
 		double income = 4000.0;
 		int months = 80;
-		Financing fnc = new Financing(totalAmount,income, months);
+		fnc = new Financing(totalAmount,income, months);
 		
 		fnc.setTotalAmount(90000.0);
 		Assertions.assertEquals(90000.0, fnc.getTotalAmount());
@@ -51,7 +50,7 @@ public class FinancingTest {
 		double totalAmount = 100000.0;
 		double income = 2000.0;
 		int months = 80;
-		Financing fnc = new Financing(totalAmount,income, months);
+		fnc = new Financing(totalAmount,income, months);
 		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			fnc.setTotalAmount(200000.0);
@@ -63,7 +62,7 @@ public class FinancingTest {
 		double totalAmount = 100000.0;
 		double income = 4000.0;
 		int months = 80;
-		Financing fnc = new Financing(totalAmount,income, months);
+		fnc = new Financing(totalAmount,income, months);
 		
 		fnc.setIncome(2000.0);
 		Assertions.assertEquals(2000.0, fnc.getIncome());
@@ -76,7 +75,7 @@ public class FinancingTest {
 		double totalAmount = 100000.0;
 		double income = 2000.0;
 		int months = 80;
-		Financing fnc = new Financing(totalAmount,income, months);
+		fnc = new Financing(totalAmount,income, months);
 		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			fnc.setIncome(1000.0);
@@ -88,7 +87,7 @@ public class FinancingTest {
 		double totalAmount = 100000.0;
 		double income = 4000.0;
 		int months = 80;
-		Financing fnc = new Financing(totalAmount,income, months);
+		fnc = new Financing(totalAmount,income, months);
 		
 		fnc.setMonths(90);
 		Assertions.assertEquals(90, fnc.getMonths());
@@ -101,7 +100,7 @@ public class FinancingTest {
 		double totalAmount = 100000.0;
 		double income = 2000.0;
 		int months = 80;
-		Financing fnc = new Financing(totalAmount,income, months);
+		fnc = new Financing(totalAmount,income, months);
 		
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			fnc.setMonths(40);
@@ -113,12 +112,11 @@ public class FinancingTest {
 		double totalAmount = 100000.0;
 		double income = 2000.0;
 		int months = 80;
-		Financing fnc = new Financing(totalAmount,income, months);
+	    fnc = new Financing(totalAmount,income, months);
 		
 		double expectedValue = 20000.0;
 		Assertions.assertEquals(expectedValue, fnc.entry());
 		Assertions.assertTrue(totalAmount * 0.2 == expectedValue);
-  
 	}
 	
 	@Test
@@ -128,9 +126,8 @@ public class FinancingTest {
 		int months = 80;
 		double entry = totalAmount * 0.2;
 		double expectedValue = 1000.0;
-		Financing fnc = new Financing(totalAmount,income, months);	
+		fnc = new Financing(totalAmount,income, months);	
 		Assertions.assertEquals(expectedValue, fnc.quota());
 		Assertions.assertTrue(totalAmount - entry == 80000.0);
-  
 	}
 }
